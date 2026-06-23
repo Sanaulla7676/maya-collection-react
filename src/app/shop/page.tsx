@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Navbar from "../../components/Navbar/Navbar";
@@ -129,15 +129,15 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* 3. Catalog content wrapped in Suspense to prevent compilation errors */}
+      {/* 3. Catalog content wrapped in Suspense with parenthesized fallback */}
       <Suspense
-        fallback={
+        fallback={(
           <div className="text-center py-32 flex flex-col items-center justify-center">
             <span className="text-[10px] uppercase tracking-[0.3em] text-stone-400 animate-pulse">
               Loading Atelier...
             </span>
           </div>
-        }
+        )}
       >
         <ShopCatalogContent />
       </Suspense>
